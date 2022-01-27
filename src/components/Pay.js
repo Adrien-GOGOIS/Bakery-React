@@ -2,7 +2,11 @@ import React from "react";
 
 class Pay extends React.Component {
   render() {
-    return <div>PAY</div>;
+    return (
+      <div>
+        <h2>PAY</h2>
+      </div>
+    );
   }
 }
 

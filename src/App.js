@@ -12,17 +12,33 @@ class App extends React.Component {
       activeTab: "Add",
       items: [],
     };
+    this.selectAdd = this.selectAdd.bind(this);
+    this.selectList = this.selectList.bind(this);
+    this.selectPay = this.selectPay.bind(this);
   }
+
+  selectAdd() {
+    this.setState({ activeTab: "Add" });
+  }
+
+  selectList() {
+    this.setState({ activeTab: "List" });
+  }
+
+  selectPay() {
+    this.setState({ activeTab: "Pay" });
+  }
+
   render() {
-    if (this.state.activeTabs === "Add") {
+    if (this.state.activeTab === "Add") {
       return <Add />;
     }
 
-    if (this.state.activeTabs === "List") {
+    if (this.state.activeTab === "List") {
       return <List />;
     }
 
-    if (this.state.activeTabs === "Pay") {
+    if (this.state.activeTab === "Pay") {
       return <Pay />;
     }
   }
