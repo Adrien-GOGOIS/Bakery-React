@@ -26,7 +26,14 @@ class List extends React.Component {
         <div>
           <ul>
             {this.props.items.map((item) => {
-              return <li>{item}</li>;
+              return (
+                <li>
+                  <p>
+                    {item.productName} {item.productPrice + " €"}
+                  </p>
+                  <p></p>
+                </li>
+              );
             })}
           </ul>
         </div>
