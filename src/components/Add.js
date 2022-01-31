@@ -7,17 +7,17 @@ class Add extends React.Component {
       <div>
         <Button
           isSelected={this.isSelected}
-          onClick={this.selectAdd}
+          onClick={this.props.selectAdd}
           children="Add"
         />
         <Button
           isSelected={this.isSelected}
-          onClick={this.selectList}
+          onClick={this.props.selectList}
           children="List"
         />
         <Button
           isSelected={this.isSelected}
-          onClick={this.selectPay}
+          onClick={this.props.selectPay}
           children="Pay"
         />
         <h2>ADD</h2>
