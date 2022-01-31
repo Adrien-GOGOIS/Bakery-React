@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button.js";
 
+// Onglet Pay
 class Pay extends React.Component {
   render() {
     return (

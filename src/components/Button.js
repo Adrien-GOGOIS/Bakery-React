@@ -1,5 +1,6 @@
 import React from "react";
 
+// Bouton de base de navigation entre onglets Pay, List & Add
 class Button extends React.Component {
   render() {
     return (

@@ -18,6 +18,7 @@ class App extends React.Component {
     this.addItem = this.addItem.bind(this);
   }
 
+  // Méthodes de sélection de la page active
   selectAdd() {
     this.setState({ activeTab: "Add" });
     console.log(this.state.activeTab);
@@ -33,6 +34,7 @@ class App extends React.Component {
     console.log(this.state.activeTab);
   }
 
+  // Méthode d'ajout d'un produit au "panier" avec preventDefault
   addItem(name, price, e) {
     e.preventDefault();
     this.setState({
@@ -41,6 +43,7 @@ class App extends React.Component {
     console.log(this.state.items);
   }
 
+  // Navigation entre les 3 onglets en fonction du state, lui-même changé en fonction du bouton cliqué par l'utilisateur
   render() {
     if (this.state.activeTab === "Add") {
       return (

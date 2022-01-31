@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
+// Onglet List
 class List extends React.Component {
   render() {
     return (
@@ -21,6 +22,7 @@ class List extends React.Component {
           children="Pay"
         />
         <h2>LIST</h2>
+        {/* Liste des produits stockés dans le "panier" */}
         <div>
           <ul>
             {this.props.items.map((item) => {

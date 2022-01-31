@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button.js";
 
+// Onglet Add
 class Add extends React.Component {
   constructor() {
     super();
@@ -13,6 +14,7 @@ class Add extends React.Component {
     this.updateProductName = this.updateProductName.bind(this);
   }
 
+  // Méthode pour récupérer les valeurs des input produit et prix et les stocker dans le state
   updateProductName(e) {
     this.setState({
       productName: e.target.value,
@@ -44,6 +46,7 @@ class Add extends React.Component {
           children="Pay"
         />
         <h2>ADD</h2>
+        {/* Formulaire pour récupérer les artciles et leur prix */}
         <div>
           <form>
             <input type="text" onChange={this.updateProductName} />
