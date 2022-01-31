@@ -15,6 +15,7 @@ class App extends React.Component {
     this.selectAdd = this.selectAdd.bind(this);
     this.selectList = this.selectList.bind(this);
     this.selectPay = this.selectPay.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   selectAdd() {
@@ -25,12 +26,19 @@ class App extends React.Component {
   selectList() {
     this.setState({ activeTab: "List" });
     console.log(this.state.activeTab);
-    console.log(this.state.items);
   }
 
   selectPay() {
     this.setState({ activeTab: "Pay" });
     console.log(this.state.activeTab);
+  }
+
+  addItem(name, price, e) {
+    e.preventDefault();
+    this.setState({
+      items: this.state.items.push({ product: name, priceTag: price }),
+    });
+    console.log(this.state.items);
   }
 
   render() {
@@ -40,6 +48,7 @@ class App extends React.Component {
           selectAdd={this.selectAdd}
           selectList={this.selectList}
           selectPay={this.selectPay}
+          addItems={this.addItem}
         />
       );
     }
