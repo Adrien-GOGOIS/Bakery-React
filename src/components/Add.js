@@ -19,12 +19,19 @@ class Add extends React.Component {
     this.setState({
       productName: e.target.value,
     });
+    // console.log("productName", this.state.productName);
   }
 
   updatePrice(e) {
     this.setState({
       price: e.target.value,
     });
+    // console.log("price", this.state.price);
+  }
+
+  addProduct(e) {
+    e.preventDefault();
+    this.props.addItem(this.state.productName, this.state.price);
   }
 
   render() {
@@ -46,12 +53,14 @@ class Add extends React.Component {
           children="Pay"
         />
         <h2>ADD</h2>
-        {/* Formulaire pour récupérer les artciles et leur prix */}
+        {/* Formulaire pour récupérer les articles et leur paramètres*/}
         <div>
           <form>
             <input type="text" onChange={this.updateProductName} />
             <input type="range" min={1} max={10} onChange={this.updatePrice} />
-            <button onClick={this.props.addItems}>Add</button>
+            <button type="submit" onClick={(e) => this.addProduct(e)}>
+              Add
+            </button>
           </form>
         </div>
       </div>

@@ -35,11 +35,10 @@ class App extends React.Component {
   }
 
   // Méthode d'ajout d'un produit au "panier" avec preventDefault
-  addItem(name, price, e) {
-    e.preventDefault();
-    this.setState({
-      items: this.state.items.push({ product: name, priceTag: price }),
-    });
+  addItem(name, price) {
+    this.setState((prevState) => ({
+      items: [...prevState.items, { name: name, price: price }],
+    }));
     console.log(this.state.items);
   }
 
@@ -51,7 +50,7 @@ class App extends React.Component {
           selectAdd={this.selectAdd}
           selectList={this.selectList}
           selectPay={this.selectPay}
-          addItems={this.addItem}
+          addItem={this.addItem}
         />
       );
     }
