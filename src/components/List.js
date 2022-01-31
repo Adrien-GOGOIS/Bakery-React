@@ -21,6 +21,13 @@ class List extends React.Component {
           children="Pay"
         />
         <h2>LIST</h2>
+        <div>
+          <ul>
+            {this.props.items.map((item) => {
+              return <li>{item}</li>;
+            })}
+          </ul>
+        </div>
       </div>
     );
   }

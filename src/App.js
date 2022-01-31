@@ -25,6 +25,7 @@ class App extends React.Component {
   selectList() {
     this.setState({ activeTab: "List" });
     console.log(this.state.activeTab);
+    console.log(this.state.items);
   }
 
   selectPay() {
@@ -49,6 +50,7 @@ class App extends React.Component {
           selectList={this.selectList}
           selectPay={this.selectPay}
           selectAdd={this.selectAdd}
+          items={this.state.items}
         />
       );
     }
