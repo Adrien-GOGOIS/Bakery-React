@@ -44,6 +44,10 @@ class App extends React.Component {
 
   // Navigation entre les 3 onglets en fonction du state, lui-même changé en fonction du bouton cliqué par l'utilisateur
   render() {
+    <div>
+      <h1>BAKERY</h1>
+    </div>;
+
     if (this.state.activeTab === "Add") {
       return (
         <Add
@@ -51,6 +55,7 @@ class App extends React.Component {
           selectList={this.selectList}
           selectPay={this.selectPay}
           addItem={this.addItem}
+          isSelected={this.state.activeTab === "Add"}
         />
       );
     }
@@ -62,6 +67,7 @@ class App extends React.Component {
           selectPay={this.selectPay}
           selectAdd={this.selectAdd}
           items={this.state.items}
+          isSelected={this.state.activeTab === "List"}
         />
       );
     }
@@ -72,6 +78,10 @@ class App extends React.Component {
           selectPay={this.selectPay}
           selectList={this.selectList}
           selectAdd={this.selectAdd}
+          isSelected={this.state.activeTab === "Pay"}
+          // totalPrice={this.state.items
+          //   .map((item) => item.productPrice)
+          //   .reduce((a, b) => a + b)}
         />
       );
     }

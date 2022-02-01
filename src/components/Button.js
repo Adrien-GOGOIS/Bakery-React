@@ -5,7 +5,14 @@ class Button extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.onClick} style={this.props.isSelected}>
+        <button
+          onClick={this.props.onClick}
+          style={{
+            backgroundColor: this.props.isSelected
+              ? "lightblue"
+              : "transparent",
+          }}
+        >
           {this.props.children}
         </button>
       </div>
