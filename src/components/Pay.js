@@ -14,11 +14,14 @@ class Pay extends React.Component {
       totalEcoTax: 0,
       totalTTC: 0,
     };
+
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  // ICI ON VA CALCULER LE TOTAL DES PRODUITS APRES AJOUT DANS LE PANIER
   componentDidUpdate(_prevProps, prevState) {
     if (prevState.basket !== this.state.basket) {
+      // Stockage des calcul dans des constantes arrondies à 2 décimales
       const actualPrice = parseInt(this.state.basket[0].price);
       const totalPrice = prevState.total + actualPrice;
       const tvaPrice =
@@ -29,6 +32,7 @@ class Pay extends React.Component {
 
       console.log(this.state.basket[0].price);
 
+      // Modification du state avec les constantes
       this.setState({
         // ...this.state.basket,
         total: totalPrice,
@@ -39,6 +43,7 @@ class Pay extends React.Component {
     }
   }
 
+  // Fonction de récupération des caractéristiques (nom/prix) du produit ajouté au panier
   handleSelect(name, price) {
     console.log(name, price);
     this.setState((prevState) => ({
@@ -47,6 +52,9 @@ class Pay extends React.Component {
     console.log(this.state.basket);
   }
 
+  // Fonction de reset du panier (state)
+
+  // RENDER DU COMPONENT PAY
   render() {
     return (
       <div>
@@ -69,6 +77,17 @@ class Pay extends React.Component {
         </div>
         <div className="d-flex flex-column align-items-center">
           <h2>PAY</h2>
+
+          {/* Bouton clear : */}
+
+          <button className="btn btn-warning m-2">Clear basket</button>
+
+          <div>
+            {this.state.basket.map((item) => (
+              <p className="me-1 badge bg-primary text-wrap">{item.name} x 1</p>
+            ))}
+          </div>
+
           <div>
             <p>Total : {this.state.total} €</p>
             <p>TVA : {this.state.totalTVA} €</p>
