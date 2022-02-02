@@ -34,7 +34,7 @@ class App extends React.Component {
     console.log(this.state.activeTab);
   }
 
-  // Méthode d'ajout d'un produit au "panier" avec preventDefault
+  // Méthode d'ajout d'un produit à la liste
   addItem(name, price) {
     this.setState((prevState) => ({
       items: [{ productName: name, productPrice: price }, ...prevState.items],
@@ -79,9 +79,8 @@ class App extends React.Component {
           selectList={this.selectList}
           selectAdd={this.selectAdd}
           isSelected={this.state.activeTab === "Pay"}
-          // totalPrice={this.state.items
-          //   .map((item) => item.productPrice)
-          //   .reduce((a, b) => a + b)}
+          productName={this.state.items.map((item) => item.productName)}
+          productPrice={this.state.items.map((item) => item.productPrice)}
         />
       );
     }

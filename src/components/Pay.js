@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "./Button.js";
 
+import Card from "./Card.js";
+
 // Onglet Pay
 class Pay extends React.Component {
   constructor() {
@@ -12,12 +14,6 @@ class Pay extends React.Component {
       totalEcoTax: 0,
       totalTTC: 0,
     };
-
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect(name, price) {
-    console.log(name, price);
   }
 
   render() {
@@ -44,6 +40,12 @@ class Pay extends React.Component {
           <p>{this.state.totalTVA}</p>
           <p>{this.state.totalEcoTax}</p>
           <p>{this.state.totalTTC}</p>
+        </div>
+        <div>
+          <Card
+            productName={this.props.productName}
+            price={this.props.productPrice}
+          />
         </div>
       </div>
     );
