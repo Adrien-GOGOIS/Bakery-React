@@ -111,18 +111,21 @@ class Pay extends React.Component {
         <div className="d-flex flex-column align-items-center">
           <h2>PAY</h2>
 
-          {/* Bouton clear : */}
+          <div className="d-flex flex-row mt-2 mb-5">
+            {/* Bouton clear : */}
 
-          <button className="btn btn-warning m-2" onClick={this.resetBasket}>
-            Clear basket
-          </button>
+            <button className="btn btn-warning m-2" onClick={this.resetBasket}>
+              Clear basket
+            </button>
 
-          {/* Boutton Save */}
+            {/* Boutton Save */}
 
-          <button className="btn btn-info m-2" onClick={this.saveState}>
-            Save basket
-          </button>
+            <button className="btn btn-info m-2" onClick={this.saveState}>
+              Save basket
+            </button>
+          </div>
 
+          {/* Affichage des objets dans le panier : */}
           <div>
             {this.state.basket.map((item) => (
               <p className="me-1 badge bg-primary text-wrap">{item.name} x 1</p>
@@ -135,7 +138,7 @@ class Pay extends React.Component {
             <p>Eco Taxe : {this.state.totalEcoTax} €</p>
             <p>Total TTC : {this.state.totalTTC} €</p>
           </div>
-          <div>
+          <div className="row">
             {this.props.productList.map((item) => {
               return (
                 <Card
