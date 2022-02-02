@@ -37,33 +37,42 @@ class Add extends React.Component {
   render() {
     return (
       <div>
-        <Button
-          isSelected={this.props.isSelected}
-          onClick={this.props.selectAdd}
-          children="Add"
-        />
-        <Button
-          isSelected={this.props.isSelected}
-          onClick={this.props.selectList}
-          children="List"
-        />
-        <Button
-          isSelected={this.props.isSelected}
-          onClick={this.props.selectPay}
-          children="Pay"
-        />
-        <h2>ADD</h2>
-        {/* Formulaire pour récupérer les articles et leur paramètres*/}
-        <div>
-          <form>
-            <input type="text" onChange={this.updateProductName} />
-            <br />
-            <input type="range" min={1} max={10} onChange={this.updatePrice} />
-            <p>{this.state.price + " €"}</p>
-            <button type="submit" onClick={(e) => this.addProduct(e)}>
-              Add
-            </button>
-          </form>
+        <div className="d-flex flex-row justify-content-center">
+          <Button
+            isSelected={this.props.isSelected}
+            onClick={this.props.selectAdd}
+            children="Add"
+          />
+          <Button
+            isSelected={this.props.isSelected}
+            onClick={this.props.selectList}
+            children="List"
+          />
+          <Button
+            isSelected={this.props.isSelected}
+            onClick={this.props.selectPay}
+            children="Pay"
+          />
+        </div>
+        <div className="d-flex flex-column align-items-center">
+          <h2>ADD</h2>
+          {/* Formulaire pour récupérer les articles et leur paramètres*/}
+          <div>
+            <form>
+              <input type="text" onChange={this.updateProductName} />
+              <br />
+              <input
+                type="range"
+                min={1}
+                max={10}
+                onChange={this.updatePrice}
+              />
+              <p>{this.state.price + " €"}</p>
+              <button type="submit" onClick={(e) => this.addProduct(e)}>
+                Add
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

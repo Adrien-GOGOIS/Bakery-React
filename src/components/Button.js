@@ -6,12 +6,8 @@ class Button extends React.Component {
     return (
       <div>
         <button
+          className={this.props.isSelected ? "btn btn-primary" : "btn"}
           onClick={this.props.onClick}
-          style={{
-            backgroundColor: this.props.isSelected
-              ? "lightblue"
-              : "transparent",
-          }}
         >
           {this.props.children}
         </button>
