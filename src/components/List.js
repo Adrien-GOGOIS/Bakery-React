@@ -29,9 +29,9 @@ class List extends React.Component {
           />
         </div>
         <div className="d-flex flex-column align-items-center">
-          <h2>LIST</h2>
+          <h2 className="m-4">LIST</h2>
           {/* Liste des produits stockés dans le "panier" */}
-          <div>
+          <div className="m-3">
             <ul>
               {this.props.items.map((item) => {
                 return (
