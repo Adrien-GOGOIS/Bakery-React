@@ -17,8 +17,32 @@ class Pay extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleSelect(e) {
-    e.preventDefault();
+  componentDidUpdate(_prevProps, prevState) {
+    if (prevState.basket !== this.state.basket) {
+      const actualPrice = this.state.basket.price;
+
+      console.log(this.state.basket);
+
+      this.setState({
+        // ...this.state.basket,
+        total: prevState.total + actualPrice,
+        totalTVA: prevState.totalTVA + actualPrice / 5,
+        totalEcoTax: this.state.basket.length * 0.03,
+        totalTTC:
+          prevState.totalTTC +
+          this.state.total +
+          this.state.totalTVA +
+          this.state.totalEcoTax,
+      });
+    }
+  }
+
+  handleSelect(name, price) {
+    console.log(name, price);
+    this.setState((prevState) => ({
+      basket: [...prevState.basket, { name: name, price: price }],
+    }));
+    console.log(this.state.basket);
   }
 
   render() {
@@ -55,7 +79,9 @@ class Pay extends React.Component {
                 <Card
                   productName={item.productName}
                   price={item.productPrice}
-                  // onClick={this.handleSelect}
+                  onClick={() =>
+                    this.handleSelect(item.productName, item.productPrice)
+                  }
                 />
               );
             })}
