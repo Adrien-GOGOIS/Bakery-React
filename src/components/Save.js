@@ -30,7 +30,7 @@ class Save extends React.Component {
         </div>
         <div className="d-flex flex-column align-items-center">
           <h2>Historique</h2>
-          {/* Liste des produits stockés dans le "panier" */}
+          {this.props.onClick}
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button.js";
+import Save from "./Save.js";
 
 import Card from "./Card.js";
 
@@ -13,14 +14,29 @@ class Pay extends React.Component {
       totalTVA: 0,
       totalEcoTax: 0,
       totalTTC: 0,
+      reset: false,
     };
 
     this.handleSelect = this.handleSelect.bind(this);
+    this.resetBasket = this.resetBasket.bind(this);
   }
 
   // ICI ON VA CALCULER LE TOTAL DES PRODUITS APRES AJOUT DANS LE PANIER
   componentDidUpdate(_prevProps, prevState) {
-    if (prevState.basket !== this.state.basket) {
+    console.log(this.state.reset);
+    if (this.state.reset === true) {
+      this.setState({
+        basket: [],
+        total: 0,
+        totalTVA: 0,
+        totalEcoTax: 0,
+        totalTTC: 0,
+        reset: false,
+      });
+    } else if (
+      prevState.basket !== this.state.basket &&
+      prevState.reset === false
+    ) {
       // Stockage des calcul dans des constantes arrondies à 2 décimales
       const actualPrice = parseInt(this.state.basket[0].price);
       const totalPrice = prevState.total + actualPrice;
@@ -53,6 +69,18 @@ class Pay extends React.Component {
   }
 
   // Fonction de reset du panier (state)
+  resetBasket() {
+    console.log("resetBasket");
+    this.setState({
+      reset: true,
+    });
+  }
+
+  // Fonction de sauvegarde du panier (state)
+  // saveState() {
+  //   const savingState = this.state.basket;
+  //   return savingState;
+  // }
 
   // RENDER DU COMPONENT PAY
   render() {
@@ -85,7 +113,15 @@ class Pay extends React.Component {
 
           {/* Bouton clear : */}
 
-          <button className="btn btn-warning m-2">Clear basket</button>
+          <button className="btn btn-warning m-2" onClick={this.resetBasket}>
+            Clear basket
+          </button>
+
+          {/* Boutton Save */}
+
+          <button className="btn btn-info m-2" onClick={this.saveState}>
+            Save basket
+          </button>
 
           <div>
             {this.state.basket.map((item) => (

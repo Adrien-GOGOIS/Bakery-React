@@ -13,7 +13,7 @@ class App extends React.Component {
     super();
     this.state = {
       activeTab: "Add",
-      items: [],
+      items: [{ productName: "coffee", productPrice: 1 }],
     };
     this.selectAdd = this.selectAdd.bind(this);
     this.selectList = this.selectList.bind(this);
