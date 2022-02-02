@@ -8,17 +8,17 @@ class List extends React.Component {
       <div>
         <div className="d-flex flex-row justify-content-center">
           <Button
-            isSelected={this.isSelected}
+            isSelected={false}
             onClick={this.props.selectAdd}
             children="Add"
           />
           <Button
-            isSelected={this.isSelected}
+            isSelected={true}
             onClick={this.props.selectList}
             children="List"
           />
           <Button
-            isSelected={this.isSelected}
+            isSelected={false}
             onClick={this.props.selectPay}
             children="Pay"
           />

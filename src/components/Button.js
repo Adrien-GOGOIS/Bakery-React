@@ -6,7 +6,7 @@ class Button extends React.Component {
     return (
       <div>
         <button
-          className={this.props.isSelected ? "btn btn-primary" : "btn"}
+          className={this.props.isSelected ? "btn btn-primary m-2" : "btn m-2"}
           onClick={this.props.onClick}
         >
           {this.props.children}

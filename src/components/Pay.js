@@ -21,17 +21,17 @@ class Pay extends React.Component {
       <div>
         <div className="d-flex flex-row justify-content-center">
           <Button
-            isSelected={this.isSelected}
+            isSelected={false}
             onClick={this.props.selectAdd}
             children="Add"
           />
           <Button
-            isSelected={this.isSelected}
+            isSelected={false}
             onClick={this.props.selectList}
             children="List"
           />
           <Button
-            isSelected={this.isSelected}
+            isSelected={true}
             onClick={this.props.selectPay}
             children="Pay"
           />
@@ -39,10 +39,10 @@ class Pay extends React.Component {
         <div className="d-flex flex-column align-items-center">
           <h2>PAY</h2>
           <div>
-            <p>{this.state.total}</p>
-            <p>{this.state.totalTVA}</p>
-            <p>{this.state.totalEcoTax}</p>
-            <p>{this.state.totalTTC}</p>
+            <p>Total : {this.state.total} €</p>
+            <p>TVA : {this.state.totalTVA} €</p>
+            <p>Eco Taxe : {this.state.totalEcoTax} €</p>
+            <p>Total TTC : {this.state.totalTTC} €</p>
           </div>
           <div>
             <Card

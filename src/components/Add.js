@@ -39,17 +39,17 @@ class Add extends React.Component {
       <div>
         <div className="d-flex flex-row justify-content-center">
           <Button
-            isSelected={this.props.isSelected}
+            isSelected={true}
             onClick={this.props.selectAdd}
             children="Add"
           />
           <Button
-            isSelected={this.props.isSelected}
+            isSelected={false}
             onClick={this.props.selectList}
             children="List"
           />
           <Button
-            isSelected={this.props.isSelected}
+            isSelected={false}
             onClick={this.props.selectPay}
             children="Pay"
           />
@@ -58,17 +58,26 @@ class Add extends React.Component {
           <h2>ADD</h2>
           {/* Formulaire pour récupérer les articles et leur paramètres*/}
           <div>
-            <form>
-              <input type="text" onChange={this.updateProductName} />
+            <form className="m-2">
+              <input
+                className="m-2 w-100"
+                type="text"
+                onChange={this.updateProductName}
+              />
               <br />
               <input
                 type="range"
                 min={1}
                 max={10}
                 onChange={this.updatePrice}
+                className="m-2 w-100"
               />
-              <p>{this.state.price + " €"}</p>
-              <button type="submit" onClick={(e) => this.addProduct(e)}>
+              <p className="m-2 text-center">{this.state.price + " €"}</p>
+              <button
+                type="submit"
+                onClick={(e) => this.addProduct(e)}
+                className="btn btn-success w-100 m-2"
+              >
                 Add
               </button>
             </form>

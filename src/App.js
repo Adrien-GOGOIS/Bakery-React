@@ -56,7 +56,7 @@ class App extends React.Component {
           selectList={this.selectList}
           selectPay={this.selectPay}
           addItem={this.addItem}
-          isSelected={this.state.activeTab === "Add"}
+          // isSelected={this.state.activeTab}
         />
       );
     }
@@ -68,7 +68,7 @@ class App extends React.Component {
           selectPay={this.selectPay}
           selectAdd={this.selectAdd}
           items={this.state.items}
-          isSelected={this.state.activeTab === "List"}
+          // isSelected={this.state.activeTab}
         />
       );
     }
@@ -79,7 +79,7 @@ class App extends React.Component {
           selectPay={this.selectPay}
           selectList={this.selectList}
           selectAdd={this.selectAdd}
-          isSelected={this.state.activeTab === "Pay"}
+          // isSelected={this.state.activeTab}
           productName={this.state.items.map((item) => item.productName)}
           productPrice={this.state.items.map((item) => item.productPrice)}
         />
