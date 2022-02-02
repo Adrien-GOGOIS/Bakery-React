@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 
 // Onglet List
-class List extends React.Component {
+class Save extends React.Component {
   render() {
     return (
       <div>
@@ -13,7 +13,7 @@ class List extends React.Component {
             children="Add"
           />
           <Button
-            isSelected={true}
+            isSelected={false}
             onClick={this.props.selectList}
             children="List"
           />
@@ -23,32 +23,18 @@ class List extends React.Component {
             children="Pay"
           />
           <Button
-            isSelected={false}
+            isSelected={true}
             onClick={this.props.selectSave}
             children="Save"
           />
         </div>
         <div className="d-flex flex-column align-items-center">
-          <h2>LIST</h2>
+          <h2>Historique</h2>
           {/* Liste des produits stockés dans le "panier" */}
-          <div>
-            <ul>
-              {this.props.items.map((item) => {
-                return (
-                  <li>
-                    <p>
-                      {item.productName} {item.productPrice + " €"}
-                    </p>
-                    <p></p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
         </div>
       </div>
     );
   }
 }
 
-export default List;
+export default Save;

@@ -74,6 +74,11 @@ class Pay extends React.Component {
             onClick={this.props.selectPay}
             children="Pay"
           />
+          <Button
+            isSelected={false}
+            onClick={this.props.selectSave}
+            children="Save"
+          />
         </div>
         <div className="d-flex flex-column align-items-center">
           <h2>PAY</h2>
