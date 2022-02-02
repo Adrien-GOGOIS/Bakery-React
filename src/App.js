@@ -80,8 +80,7 @@ class App extends React.Component {
           selectList={this.selectList}
           selectAdd={this.selectAdd}
           // isSelected={this.state.activeTab}
-          productName={this.state.items.map((item) => item.productName)}
-          productPrice={this.state.items.map((item) => item.productPrice)}
+          productList={this.state.items}
         />
       );
     }

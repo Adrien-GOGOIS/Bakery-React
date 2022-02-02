@@ -14,6 +14,11 @@ class Pay extends React.Component {
       totalEcoTax: 0,
       totalTTC: 0,
     };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(e) {
+    e.preventDefault();
   }
 
   render() {
@@ -45,10 +50,15 @@ class Pay extends React.Component {
             <p>Total TTC : {this.state.totalTTC} €</p>
           </div>
           <div>
-            <Card
-              productName={this.props.productName}
-              price={this.props.productPrice}
-            />
+            {this.props.productList.map((item) => {
+              return (
+                <Card
+                  productName={item.productName}
+                  price={item.productPrice}
+                  // onClick={this.handleSelect}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

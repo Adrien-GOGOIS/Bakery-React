@@ -55,7 +55,7 @@ class Add extends React.Component {
           />
         </div>
         <div className="d-flex flex-column align-items-center">
-          <h2>ADD</h2>
+          <h2 className="mt-2">ADD</h2>
           {/* Formulaire pour récupérer les articles et leur paramètres*/}
           <div>
             <form className="m-2">
