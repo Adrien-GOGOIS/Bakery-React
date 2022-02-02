@@ -19,20 +19,22 @@ class Pay extends React.Component {
 
   componentDidUpdate(_prevProps, prevState) {
     if (prevState.basket !== this.state.basket) {
-      const actualPrice = this.state.basket.price;
+      const actualPrice = parseInt(this.state.basket[0].price);
+      const totalPrice = prevState.total + actualPrice;
+      const tvaPrice =
+        Math.round((prevState.totalTVA + actualPrice / 5) * 100) / 100;
+      const ecoPrice = Math.round(this.state.basket.length * 0.03 * 100) / 100;
+      const ttcPrice =
+        Math.round((totalPrice + tvaPrice + ecoPrice) * 100) / 100;
 
-      console.log(this.state.basket);
+      console.log(this.state.basket[0].price);
 
       this.setState({
         // ...this.state.basket,
-        total: prevState.total + actualPrice,
-        totalTVA: prevState.totalTVA + actualPrice / 5,
-        totalEcoTax: this.state.basket.length * 0.03,
-        totalTTC:
-          prevState.totalTTC +
-          this.state.total +
-          this.state.totalTVA +
-          this.state.totalEcoTax,
+        total: totalPrice,
+        totalTVA: tvaPrice,
+        totalEcoTax: ecoPrice,
+        totalTTC: ttcPrice,
       });
     }
   }
@@ -40,7 +42,7 @@ class Pay extends React.Component {
   handleSelect(name, price) {
     console.log(name, price);
     this.setState((prevState) => ({
-      basket: [...prevState.basket, { name: name, price: price }],
+      basket: [{ name: name, price: price }, ...prevState.basket],
     }));
     console.log(this.state.basket);
   }
