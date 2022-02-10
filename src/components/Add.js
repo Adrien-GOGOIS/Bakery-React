@@ -125,8 +125,9 @@ class Add extends React.Component {
                 <span className="fw-bold">{this.state.price}€</span> to list !
               </li>
             ) : (
-              <li className="list-group-item text-center is-invalid">
-                Add a valid product and click on submit bouton
+              <li className="list-group-item text-center">
+                Add a valid product and click on{" "}
+                <span className="fst-italic fw-light">submit</span> bouton
               </li>
             )}
           </ul>
