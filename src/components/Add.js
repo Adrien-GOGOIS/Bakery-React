@@ -19,10 +19,15 @@ class Add extends React.Component {
 
   // Méthode pour récupérer les valeurs des input produit et prix et les stocker dans le state
   updateProductName(e) {
-    this.setState({
-      productName: e.target.value,
-      clicked: false,
-    });
+    console.log(e.target.value);
+    if (e.target.value !== "") {
+      this.setState({
+        productName: e.target.value,
+        // On remet ici le state à false pour effacer le message précédent d'ajout en dessous du bouton Add
+        clicked: false,
+      });
+    }
+
     // console.log("productName", this.state.productName);
   }
 
@@ -37,8 +42,11 @@ class Add extends React.Component {
 
   addProduct(e) {
     e.preventDefault();
-    this.props.addItem(this.state.productName, this.state.price);
+    if (this.state.productName !== "") {
+      this.props.addItem(this.state.productName, this.state.price);
+    }
 
+    // CHANGEMENT DU STATE POUR AFFICHER UN MESSAGE EN DESSOUS DU BOUTON
     this.setState({
       clicked: true,
     });
@@ -83,7 +91,7 @@ class Add extends React.Component {
               <input
                 type="range"
                 // value="5"
-                min={0}
+                min={1}
                 max={10}
                 // step="1"
                 onChange={this.updatePrice}
@@ -102,21 +110,24 @@ class Add extends React.Component {
                 onClick={(e) => this.addProduct(e)}
                 className="btn btn-success w-100 mt-2 mb-2"
               >
-                Add
+                Submit
               </button>
             </form>
           </div>
         </div>
+        {/* Ici render conditionnel lorsque le bouton Add est cliqué pour confirmer la prise en compte de l'artcile ajouté */}
         <div className=" d-flex flex-column align-items-center justify-content-center">
           <ul className="list-group mt-2 w-25">
-            {this.state.clicked ? (
+            {this.state.clicked && this.state.productName !== "" ? (
               <li className="list-group-item text-center">
                 You just add{" "}
                 <span className="fw-bold">{this.state.productName}</span> at{" "}
                 <span className="fw-bold">{this.state.price}€</span> to list !
               </li>
             ) : (
-              ""
+              <li className="list-group-item text-center is-invalid">
+                Add a valid product and click on submit bouton
+              </li>
             )}
           </ul>
         </div>
