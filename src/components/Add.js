@@ -105,15 +105,20 @@ class Add extends React.Component {
                 Add
               </button>
             </form>
-
-            <ul className="list-group mt-2">
-              {this.state.clicked ? (
-                <li className="list-group-item">Article ajouté !</li>
-              ) : (
-                ""
-              )}
-            </ul>
           </div>
+        </div>
+        <div className=" d-flex flex-column align-items-center justify-content-center">
+          <ul className="list-group mt-2 w-25">
+            {this.state.clicked ? (
+              <li className="list-group-item text-center">
+                You just add{" "}
+                <span className="fw-bold">{this.state.productName}</span> at{" "}
+                <span className="fw-bold">{this.state.price}€</span> to list !
+              </li>
+            ) : (
+              ""
+            )}
+          </ul>
         </div>
       </div>
     );
