@@ -75,7 +75,7 @@ class Add extends React.Component {
           <div>
             <form className="m-2">
               <input
-                className="m-2 w-100"
+                className="mt-2 mb-2 w-100"
                 type="text"
                 onChange={this.updateProductName}
               />
@@ -87,7 +87,7 @@ class Add extends React.Component {
                 max={10}
                 // step="1"
                 onChange={this.updatePrice}
-                className="m-2 w-100"
+                className="mt-2 mb-2 w-100"
               />
 
               <datalist>
@@ -96,17 +96,17 @@ class Add extends React.Component {
                 <option value="10" label="10€"></option>
               </datalist>
 
-              <p className="m-2 text-center">{updateRange + " €"}</p>
+              <p className="mt-2 mb-2 text-center">{updateRange + " €"}</p>
               <button
                 type="submit"
                 onClick={(e) => this.addProduct(e)}
-                className="btn btn-success w-100 m-2"
+                className="btn btn-success w-100 mt-2 mb-2"
               >
                 Add
               </button>
             </form>
 
-            <ul className="list-group">
+            <ul className="list-group mt-2">
               {this.state.clicked ? (
                 <li className="list-group-item">Article ajouté !</li>
               ) : (
