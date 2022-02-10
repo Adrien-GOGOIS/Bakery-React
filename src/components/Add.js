@@ -10,6 +10,7 @@ class Add extends React.Component {
     this.state = {
       productName: "",
       price: 1,
+      clicked: false,
     };
 
     this.updatePrice = this.updatePrice.bind(this);
@@ -20,6 +21,7 @@ class Add extends React.Component {
   updateProductName(e) {
     this.setState({
       productName: e.target.value,
+      clicked: false,
     });
     // console.log("productName", this.state.productName);
   }
@@ -36,6 +38,10 @@ class Add extends React.Component {
   addProduct(e) {
     e.preventDefault();
     this.props.addItem(this.state.productName, this.state.price);
+
+    this.setState({
+      clicked: true,
+    });
   }
 
   render() {
@@ -99,6 +105,14 @@ class Add extends React.Component {
                 Add
               </button>
             </form>
+
+            <ul className="list-group">
+              {this.state.clicked ? (
+                <li className="list-group-item">Article ajouté !</li>
+              ) : (
+                ""
+              )}
+            </ul>
           </div>
         </div>
       </div>
