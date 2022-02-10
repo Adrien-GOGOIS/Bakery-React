@@ -89,6 +89,10 @@ class Pay extends React.Component {
     this.setState({
       reset: true,
     });
+
+    totalCake = 0;
+    totalCoffee = 0;
+    totalCroissant = 0;
   }
 
   // Fonction sauvegarde du panier
