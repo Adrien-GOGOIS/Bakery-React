@@ -4,6 +4,12 @@ import Save from "./Save.js";
 
 import Card from "./Card.js";
 
+let totalCroissant = 0;
+let totalCoffee = 0;
+let totalCake = 0;
+
+let savedBasket = [];
+
 // Onglet Pay
 class Pay extends React.Component {
   constructor() {
@@ -19,6 +25,7 @@ class Pay extends React.Component {
 
     this.handleSelect = this.handleSelect.bind(this);
     this.resetBasket = this.resetBasket.bind(this);
+    this.saveBasket = this.saveBasket.bind(this);
   }
 
   // ICI ON VA CALCULER LE TOTAL DES PRODUITS APRES AJOUT DANS LE PANIER
@@ -65,6 +72,14 @@ class Pay extends React.Component {
     this.setState((prevState) => ({
       basket: [{ name: name, price: price }, ...prevState.basket],
     }));
+
+    if (name === "croissant") {
+      totalCroissant++;
+    } else if (name === "coffee") {
+      totalCoffee++;
+    } else if (name === "cake") {
+      totalCake++;
+    }
     console.log(this.state.basket);
   }
 
@@ -76,11 +91,11 @@ class Pay extends React.Component {
     });
   }
 
-  // Fonction de sauvegarde du panier (state)
-  // saveState() {
-  //   const savingState = this.state.basket;
-  //   return savingState;
-  // }
+  // Fonction sauvegarde du panier
+  saveBasket() {
+    savedBasket.push(this.state.basket);
+    console.log("sauvegarde", savedBasket);
+  }
 
   // RENDER DU COMPONENT PAY
   render() {
@@ -109,34 +124,61 @@ class Pay extends React.Component {
           />
         </div>
         <div className="d-flex flex-column align-items-center">
-          <h2>PAY</h2>
+          <h2 className="m-2">PAY</h2>
 
           <div className="d-flex flex-row mt-2 mb-5">
             {/* Bouton clear : */}
 
-            <button className="btn btn-warning m-2" onClick={this.resetBasket}>
+            <button
+              className="btn btn-warning mt-2 me-1"
+              onClick={this.resetBasket}
+            >
               Clear basket
             </button>
 
             {/* Boutton Save */}
 
-            <button className="btn btn-info m-2" onClick={this.saveState}>
+            <button
+              className="btn btn-success mt-2 ms-1"
+              onClick={this.saveBasket}
+            >
               Save basket
             </button>
           </div>
 
-          {/* Affichage des objets dans le panier : */}
-          <div>
-            {this.state.basket.map((item) => (
-              <p className="me-1 badge bg-primary text-wrap">{item.name} x 1</p>
-            ))}
+          <div className="mt-0">
+            <ul>
+              {totalCroissant !== 0 ? (
+                <li className="me-1 badge bg-primary text-wrap">
+                  Croissant x {totalCroissant}
+                </li>
+              ) : (
+                ""
+              )}
+
+              {totalCake !== 0 ? (
+                <li className="me-1 badge bg-primary text-wrap">
+                  Cake x {totalCake}
+                </li>
+              ) : (
+                ""
+              )}
+
+              {totalCoffee !== 0 ? (
+                <li className="me-1 badge bg-primary text-wrap">
+                  Coffee x {totalCoffee}
+                </li>
+              ) : (
+                ""
+              )}
+            </ul>
           </div>
 
-          <div>
+          <div className=" border border-2 border-dark rounded-2 mb-4 mt-2 p-4 w-25 fw-bold">
             <p>Total : {this.state.total} €</p>
             <p>TVA : {this.state.totalTVA} €</p>
             <p>Eco Taxe : {this.state.totalEcoTax} €</p>
-            <p>Total TTC : {this.state.totalTTC} €</p>
+            <p className="text-success">Total TTC : {this.state.totalTTC} €</p>
           </div>
           <div className="row">
             {this.props.productList.map((item) => {

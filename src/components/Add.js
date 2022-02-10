@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "./Button.js";
 
+let updateRange = 0;
+
 // Onglet Add
 class Add extends React.Component {
   constructor() {
@@ -26,6 +28,8 @@ class Add extends React.Component {
     this.setState({
       price: e.target.value,
     });
+
+    updateRange = e.target.value;
     // console.log("price", this.state.price);
   }
 
@@ -72,13 +76,21 @@ class Add extends React.Component {
               <br />
               <input
                 type="range"
-                value="1"
-                min={1}
+                // value="5"
+                min={0}
                 max={10}
+                // step="1"
                 onChange={this.updatePrice}
                 className="m-2 w-100"
               />
-              <p className="m-2 text-center">{this.state.price + " €"}</p>
+
+              <datalist>
+                <option value="0" label="0€"></option>
+                <option value="5" label="5€"></option>
+                <option value="10" label="10€"></option>
+              </datalist>
+
+              <p className="m-2 text-center">{updateRange + " €"}</p>
               <button
                 type="submit"
                 onClick={(e) => this.addProduct(e)}

@@ -2,6 +2,21 @@ import React from "react";
 
 // Bouton de base de navigation entre onglets Pay, List & Add
 class Button extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      star: "",
+    };
+  }
+
+  componentDidUpdate(prevProps, _prevState) {
+    if (prevProps.isSelected !== this.props.isSelected) {
+      this.setState({
+        star: "*",
+      });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -10,6 +25,7 @@ class Button extends React.Component {
           onClick={this.props.onClick}
         >
           {this.props.children}
+          {this.state.star}
         </button>
       </div>
     );
